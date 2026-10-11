@@ -18,6 +18,10 @@ public class playerControl : MonoBehaviour
     public LayerMask whatIsGround ;
     private bool grounded;
 
+
+private Animator anim;
+
+
    void FixedUpdate()
     {
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
@@ -29,7 +33,11 @@ public class playerControl : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity= new Vector2(GetComponent<Rigidbody2D>().velocity.x , jumpHeight);
     }
     void Start()
-    {}
+    {
+        anim = GetComponent<Animator>();
+
+
+    }
 
     // Update is called once per frame
     void Update()
@@ -67,6 +75,16 @@ public class playerControl : MonoBehaviour
         {
             jump();
         }
+
+        anim.SetFloat("speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
+        
+        anim.SetFloat("height", GetComponent<Rigidbody2D>().velocity.y);
+        
+        anim.SetBool("grounded", grounded);
+
+
+
+
 
     }
     
