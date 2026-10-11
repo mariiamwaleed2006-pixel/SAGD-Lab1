@@ -50,3 +50,6 @@ TagManager:
   - name: ground
     uniqueID: 3239325637
     locked: 0
+  - name: obs
+    uniqueID: 138229391
+    locked: 0
